@@ -9,7 +9,7 @@ import java.util.regex.Pattern;
  *
  * Examples: String, Pattern, boxed
  */
-public class AvoidUnnecessaryObjectCreation {
+public class UnnecessaryObjectCreation {
   private static final Pattern ROMAN = Pattern.compile("^(?=.)M*(C[MD]|D?C{0,3})(X[CL]|L?X{0,3})(I[XV]|V?I{0,3})$");
   private static final int ITERATIONS = 1000;
 
