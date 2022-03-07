@@ -4,21 +4,23 @@ import java.lang.ref.Cleaner;
 
 /**
  * Finalizers are unpredictable, often dangerous, and generally unnecessary. Their use can cause
- * erratic behavior, poor performance, and portability problems. Cleaners are less dangerous than
- * finalizers, but still unpredictable, slow, and generally unnecessary. - One shortcoming of
- * finalizers and cleaners is that there is no guarantee they’ll be executed promptly. It can take
- * arbitrarily long between the time that an object becomes unreachable and the time its finalizer
- * or cleaner runs. - The promptness with which finalizers and cleaners are executed is primarily a
- * function of the garbage collection algorithm, which varies widely across implementations. -
- * Another problem with finalizers is that an uncaught exception thrown during finalization is
+ * erratic behavior, poor performance, and portability problems.
+ * Cleaners are less dangerous than finalizers, but still unpredictable, slow, and generally unnecessary.
+ * - One shortcoming of finalizers and cleaners is that there is no guarantee they’ll be executed promptly.
+ * It can take arbitrarily long between the time that an object becomes unreachable and the time its finalizer
+ * or cleaner runs.
+ * - The promptness with which finalizers and cleaners are executed is primarily a
+ * function of the garbage collection algorithm, which varies widely across implementations.
+ * - Another problem with finalizers is that an uncaught exception thrown during finalization is
  * ignored, and finalization of that object terminates. - There is a severe performance penalty for
  * using finalizers and cleaners.
  *
- * <p>So, what to do? Have your classes implement AutoCloseable, and require its clients invoke the
+ * So, what to do? Have your classes implement AutoCloseable, and require its clients invoke the
  * close method when it is no longer needed.
  *
- * <p>What are finalizers and cleaners good for? + Act as a safety net in case the owner of a
- * resource neglects to call its close method. + Use it to reclaim native peers(non-java) object
+ * What are finalizers and cleaners good for?
+ * + Act as a safety net in case the owner of a resource neglects to call its close method.
+ * + Use it to reclaim native peers(non-java) object.
  */
 public class FinalizerAndCleaner {
 
