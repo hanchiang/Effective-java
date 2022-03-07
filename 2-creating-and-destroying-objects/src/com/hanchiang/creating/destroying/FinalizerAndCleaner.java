@@ -12,8 +12,8 @@ import java.lang.ref.Cleaner;
  * - The promptness with which finalizers and cleaners are executed is primarily a
  * function of the garbage collection algorithm, which varies widely across implementations.
  * - Another problem with finalizers is that an uncaught exception thrown during finalization is
- * ignored, and finalization of that object terminates. - There is a severe performance penalty for
- * using finalizers and cleaners.
+ * ignored, and finalization of that object terminates.
+ * - There is a severe performance penalty for using finalizers and cleaners.
  *
  * So, what to do? Have your classes implement AutoCloseable, and require its clients invoke the
  * close method when it is no longer needed.
