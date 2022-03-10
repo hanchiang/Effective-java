@@ -9,12 +9,13 @@ import java.io.*;
  * Closing resources is often overlooked by clients, with predictably dire performance consequences.
  *
  * Why is try-finally not recommended?
- * Because statements in both try and finally are equally capable of throwing exceptions.
+ * Because statements in both try and finally are equally capable of throwing exceptions. The exception
+ * from the try block will be suppressed, which is not what we want.
  * This presents additionally complexity when it comes to freeing resources.
  * With nested try-finally blocks, it becomes even more difficult to ensure resources are released correctly.
  *
  * try-with-resources solves all these problems!
- * A resource needs to implement the AutoCloseable interface, which consists of a close mthod.
+ * A resource needs to implement the AutoCloseable interface, which consists of a close method.
  */
 public class TryWithResources {
   // try-with-resources - the best way to close resources!
