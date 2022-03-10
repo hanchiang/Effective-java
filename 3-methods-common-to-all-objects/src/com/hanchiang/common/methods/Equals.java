@@ -11,7 +11,7 @@ import java.util.Objects;
  * - Each instance of the class is inherently unique
  * - There is no need for the class to provide a logical equality test, e.g. java.util.regex.Pattern
  * - A super class has already overridden equals, and the super class behavior is appropriate for this class,
- * e.g. ost Set implementations inherit their equals implementation from AbstractSet,
+ * e.g. most Set implementations inherit their equals implementation from AbstractSet,
  * List implementations from AbstractList, and Map implementations from AbstractMap.
  * - The class is private or package-private, and you are certain that its equals method will never be invoked
  *
