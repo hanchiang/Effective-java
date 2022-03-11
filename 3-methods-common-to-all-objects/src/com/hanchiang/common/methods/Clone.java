@@ -10,9 +10,14 @@ import java.util.EmptyStackException;
  * otherwise it throws CloneNotSupportedException. This is a highly atypical use of interfaces and not one to be emulated.
  *
  * If the superclass provides a clone method, use it.
+ * Then fix any fields that need fixing.
+ * Typically, this means copying any mutable objects that comprise the internal “deep structure”
+ * of the object and replacing the clone’s references to these objects with references to their copies.
  *
- * Be careful when an object contain fields that refer to mutable objects.
- * Those objects need to be cloned recursively.
+ * If the class contains only primitive fields or references to immutable objects,
+ * then it is likely the case that no fields need to be fixed.
+ *
+ * A better approach to object copying is to provide a copy constructor or copy factory.
  *
  * https://docs.oracle.com/javase/7/docs/api/java/lang/Object.html#clone()
  */
@@ -198,9 +203,22 @@ class HashTable implements Cloneable {
       this.next = next;
     }
 
-    // Recursively copy the linked list headed by this Entry
+    /**
+     * Recursively copy the linked list headed by this Entry.
+     * Not ideal if there are many entries in the linked list
+     */
+//    public Entry deepCopy() {
+//      return new Entry(key, value, next == null ? null : next.deepCopy());
+//    }
+
+    // Iteratively copy the linked list headed by this Entry
     public Entry deepCopy() {
-      return new Entry(key, value, next == null ? null : next.deepCopy());
+      Entry result = new Entry(key, value, next);
+
+      for (Entry p = result; p.next != null; p = p.next) {
+        p.next = new Entry(p.next.key, p.next.value, p.next.next);
+      }
+      return result;
     }
   }
 
